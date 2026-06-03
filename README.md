@@ -59,6 +59,13 @@ Then run:
 bash examples/ddrl/LLaMA3.1-Instruct/amc.sh
 ```
 
+### Consensus-based Off-policy Refinement (COR)
+
+The COR stage leverages the rejection-sampled rollout data to perform efficient and stable off-policy SFT. The rollout data generated during training is saved under the `rollout_data_dir` specified in the training script. You can use this data with any third-party SFT framework (e.g., [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)) to fine-tune the model:
+
+1. **Collect rollout data**: After the RL training, the rollout data is stored in `rollout_data_dir`.
+2. **Fine-tune with SFT**: Feed the rollout data into a third-party training framework such as [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory) to perform the COR stage.
+
 ## 🙏 Acknowledgement
 This work is based on [TTRL](https://github.com/PRIME-RL/TTRL) and [veRL](https://github.com/verl-project/verl). We sincerely thank the authors and contributors of these excellent open-source projects.
 
